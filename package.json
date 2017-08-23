@@ -1,0 +1,40 @@
+{
+  "name": "fes-portal",
+  "version": "1.0.0",
+  "description": "Finance societies communication portal powered by FES-NSIT",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tech4GT/fes-portal.git"
+  },
+  "keywords": [
+    "fes",
+    "portal",
+    "finance",
+    "economics"
+  ],
+  "author": "Varun Gupta <varun.gupta1798@gmail.com> (http://codingblocks.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tech4GT/fes-portal/issues"
+  },
+  "homepage": "https://github.com/tech4GT/fes-portal#readme",
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "body-parser": "^1.17.2",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.4",
+    "express-hbs": "^1.0.4",
+    "express-session": "^1.15.5",
+    "express-validator": "^3.2.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7",
+    "pg": "^7.2.0",
+    "sequelize": "^4.7.1"
+  }
+}
