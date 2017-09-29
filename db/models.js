@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
+const config = require('../config')
 
-const sequelize = new Sequelize('tech4GT', 'tech4GT', 'Cool@man6', {
+const sequelize = new Sequelize(config.DB_NAME, config.DB_USER, config.DB_PASS, {
     dialect: 'postgres',
     port: 5432,
 
@@ -39,7 +40,8 @@ const Users = sequelize.define('users', {
 const Societies = sequelize.define('societies', {
     id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
     name: {type: Sequelize.STRING, allowNull: false},
-    college: {type: Sequelize.STRING, allowNull: false}
+    college: {type: Sequelize.STRING, allowNull: false},
+    description: Sequelize.STRING
 });
 
 

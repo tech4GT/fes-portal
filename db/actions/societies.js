@@ -6,10 +6,11 @@ module.exports = {
             done(data)
         })
     },
-    addNew: function (name, college, done) {
+    addNew: function (name, college, description, done) {
         models.Societies.create({
             name: name,
             college: college,
+            description : description
         }).then(data => {
             done(data)
         }).catch(err => {
