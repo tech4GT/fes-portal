@@ -9,9 +9,10 @@ router.get('/:id', function (req, res) {
 })
 
 router.post('/new', function (req, res) {
+    console.log(req.body)
     req.body.name = req.body.name ? req.body.name : ""
     req.body.desc = req.body.desc ? req.body.desc : ""
-    req.body.date = req.body.date ? JSON.parse(req.body.date) : new Date()
+    req.body.date = req.body.date ? new Date(req.body.date) : new Date()
     req.body.venue = req.body.venue ? req.body.venue : ""
     if (!req.body.sid) res.send({
         error: "please include the society id in the request"

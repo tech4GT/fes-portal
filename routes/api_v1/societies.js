@@ -15,8 +15,8 @@ router.get('/:id/users', function (req, res) {
 router.post('/new', function (req, res) {
     req.body.name = req.body.name ? req.body.name : ""
     req.body.college = req.body.college ? req.body.college : ""
-    eq.body.description = req.body.description ? req.body.description : ""
-    db.actions.societies.addNew(req.body.name, req.body.college,req.body.descpription, data => res.send(data))
+    req.body.desc = req.body.description ? req.body.description : ""
+    db.actions.societies.addNew(req.body.name, req.body.college,req.body.desc, data => res.send(data))
 })
 
 router.post('/:id/adduser', function (req, res) {
