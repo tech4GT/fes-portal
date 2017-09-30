@@ -8,7 +8,6 @@ const exphbs = require('express-hbs')
 const validator = require('express-validator')
 const flash = require('connect-flash')
 
-
 const routes  = require('./routes')
 
 
@@ -64,7 +63,7 @@ app.use(function (req, res, next) {
 
 app.use('/api/v1',routes.api)
 app.use('/users',routes.users)
-app.use('events',routes.events)
+app.use('/events',routes.events)
 app.use('/',express.static(path.join(__dirname,'public_html')),routes.home)
 
 
