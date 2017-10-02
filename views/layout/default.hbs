@@ -4,14 +4,59 @@
     <title>FES-PORTAL</title>
     <link rel="stylesheet" href="../../css/bootstrap.css">
     <link rel="stylesheet" href="../../css/style.css">
+    <script type="text/javascript" src ="../../js/bootstrap.js"></script>
+    <script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
 
 
 </head>
 <body>
+<!--  <div class="navbar navbar-static-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="/">FES NSIT</a>
+    <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+    f
+    </button>
+    </div>
+    <div class="collapse navbar-collapse navHeaderCollapse">
+        <ul class="nav navbar-nav navbar-right">
+        {{#if user}}
+            <li><a href="/users/me"><span class="glyphicon glyphicon-th-list"></span> Dashboard</a></li>
+            <li><a href="/users/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        {{else}}
+            <li><a href="/users/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="/users/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        {{/if}}
+        </ul>
+    </div>
+  </div>
+</div>  -->
 
-</body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="/">FES NSIT</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        {{#if user}}
+            <li role="presentation"><a href="/users/me">Dashboard</a></li>
+            <li role="presentation"><a href="/users/logout">Logout</a></li>
+        {{else}}
+            <li role="presentation"><a href="/users/login">Login</a></li>
+            <li role="presentation"><a href="/users/signup">Register</a></li>
+        {{/if}}
+      </ul>
+    </div>
+  </div>
+</nav>
 <div class="container">
-    <div class="header clearfix">
+<!--     <div class="header clearfix">
         <nav>
             <ul class="nav nav-pills pull-right">
                 <li role="presentation"><a href="/">Home</a></li>
@@ -25,7 +70,7 @@
             </ul>
         </nav>
         <h3 class="text-muted">FES PORTAL</h3>
-    </div>
+    </div> -->
 
 
     <div class="row">
@@ -51,10 +96,13 @@
         </div>
     </div>
 
-    <footer class="footer">
-        <p>&copy; 2017 Finance and Economics Society of NSIT</p>
-    </footer>
-
 </div> <!-- /container -->
+<footer>
+    <div class="footer text-center">
+        <p>&copy; 2017 Finance and Economics Society of NSIT</p>
+    </div>
+</footer>
+
+</body>
 
 </html>
