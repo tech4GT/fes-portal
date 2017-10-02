@@ -13,6 +13,7 @@ router.use('/', function (req, res) {
             arr.push(data[a].dataValues)
         }
         arr.sort(util.compare)
+        arr.splice(4)
         res.render('home', {
             data: arr
         })

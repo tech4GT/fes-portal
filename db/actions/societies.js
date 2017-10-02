@@ -79,22 +79,5 @@ module.exports = {
         }).catch(err => {
             if (err) throw err
         })
-    },
-    addLocalsociety: function (username, password, sid, done) {
-        bcrypt.hash(password, 10, function (err, hash) {
-            password = hash;
-            models.UserLocal
-                .create({
-                    username: username,
-                    password: password,
-                    societyId: sid
-                })
-                .then(function (data) {
-                    done(data);
-                })
-                .catch(function (err) {
-                    if (err) throw err;
-                });
-        });
     }
 }

@@ -1,0 +1,13 @@
+{{#each data}}
+    <ul class="bg-info">
+        <a href="/events/{{this.id}}"><li class="alert">
+            NAME : {{this.name}}
+            DATE : {{this.date}}
+        </li>
+        </a>
+    </ul>
+{{/each}}
+<br>
+{{#if user.description}}
+<button class="btn btn-default"><a href="/events/new">Create New</a></button>
+{{/if}}

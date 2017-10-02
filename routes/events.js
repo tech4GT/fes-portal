@@ -4,19 +4,20 @@
 const express = require('express')
 const db = require('../db')
 const util = require('../utils')
+const acl = require('../acl')
 const router = express.Router()
 
-router.post('/new', function (req, res) {
+router.post('/new',acl.EnsureLogin,acl.EnsureLoginSociety, function (req, res) {
     var Event = {}
-    Event.name = req.body.name
-    Event.desc = req.body.desc
-    Event.date = new Date(req.body.date)
-    Event.venue = req.body.venue
+    Event.name = req.body.Name
+    Event.desc = req.body.Desc
+    Event.date = new Date(req.body.Date)
+    Event.venue = req.body.Venue
     Event.archived = false
 
     req.checkBody('Name', 'name is required').notEmpty();
     req.checkBody('Date', 'date is required').notEmpty();
-    req.checkBody('venue', 'venue is required').notEmpty();
+    req.checkBody('Venue', 'venue is required').notEmpty();
 
     var errors = req.validationErrors();
 
@@ -26,7 +27,7 @@ router.post('/new', function (req, res) {
         })
     }
     else {
-        db.actions.events.addNew(Event.name, Event.desc, Event.date, Event.venue, req.body.sid, Event.archived, function (data) {
+        db.actions.events.addNew(Event.name, Event.desc, Event.date, Event.venue, req.user.id, Event.archived, function (data) {
             res.render('event', {
                 details : data.dataValues
             })
@@ -34,7 +35,7 @@ router.post('/new', function (req, res) {
     }
 
 })
-router.get('/', function (req, res) {
+router.get('/new',acl.EnsureLogin,acl.EnsureLoginSociety, function (req, res) {
     res.render('newevent')
 })
 router.get('/:id',function (req, res) {
@@ -42,6 +43,18 @@ router.get('/:id',function (req, res) {
         res.render('event',{
             details : data.dataValues
         })
+    })
+})
+router.get('/',function (req, res) {
+    db.actions.events.getAll(function (data) {
+        let arr = [];
+        for (let a in data) {
+            arr.push(data[a].dataValues)
+        }
+        res.render('eventlist',{
+            data : arr
+        })
+
     })
 })
 

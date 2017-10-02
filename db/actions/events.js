@@ -10,14 +10,14 @@ module.exports = {
             done(data)
         })
     },
-    addNew: function (name,desc, date, venue, sid,archived, done) {
+    addNew: function (name, desc, date, venue, sid, archived, done) {
         models.Events.create({
-            name : name,
+            name: name,
             desc: desc,
             date: date,
             venue: venue,
             societyId: sid,
-            archived : archived
+            archived: archived
         }).then(data => {
             done(data)
         }).catch(err => {
@@ -29,12 +29,23 @@ module.exports = {
             where: {
                 id: id
             },
-            include : models.Societies
+            include: models.Societies
         }).then(data => {
             done(data)
         }).catch((err) => {
             done(err)
         });
+    },
+    searchbysociety: function (sId, done) {
+        models.Events.findAll({
+            where: {
+                societyId: sId
+            }
+        }).then(function (data) {
+            done(data)
+        }).catch(function (err) {
+            if(err) throw err;
+        })
     },
     patchOne: function (id, obj, done) {
         searchOne(id, data => {
@@ -52,7 +63,7 @@ module.exports = {
             }
         }).then(data => {
             done({
-                status : data
+                status: data
             })
         }).catch(err => {
             if (err) throw err

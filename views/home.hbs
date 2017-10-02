@@ -1,0 +1,11 @@
+{{#each data}}
+    <ul class="bg-info">
+        <a href="/events/{{this.id}}"><li class="alert">
+            NAME : {{this.name}}
+            DATE : {{this.date}}
+        </li>
+        </a>
+    </ul>
+{{/each}}
+<br>
+<button class="btn btn-default"><a href="/events">View All</a></button>
