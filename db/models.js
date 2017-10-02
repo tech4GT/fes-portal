@@ -26,7 +26,12 @@ const Events = sequelize.define('events', {
 
 //table to store Users
 //todo add picture field
-const Users = sequelize.define('users', {
+
+const User = sequelize.define('users',{
+    id : {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true}
+})
+
+const Person = sequelize.define('person', {
     id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
     name: {type: Sequelize.STRING, allowNull: false},
     email: {type: Sequelize.STRING, isEmail: true, allowNull: false},
@@ -52,14 +57,6 @@ const Userlocal = sequelize.define('userlocal', {
     password: {type: Sequelize.STRING, allowNull: false}
 });
 
-
-//table to store the details of a local society
-const Societylocal = sequelize.define('societylocals', {
-    id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
-    username: {type: Sequelize.STRING, allowNull: false},
-    password: {type: Sequelize.STRING, allowNull: false}
-});
-
 //table to store admins(who can create delete and patch requests)
 const Admins = sequelize.define('admins', {
     id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
@@ -74,13 +71,18 @@ const Usersgoingtoevents = sequelize.define('usersgoingtoevents',{});
 
 
 //one to one mapping for userlocal and user
-Userlocal.belongsTo(Users);
-Users.hasOne(Userlocal);
+Userlocal.belongsTo(User);
+User.hasOne(Userlocal);
 
 
-//one to one mapping for societylocal and society
-Societylocal.belongsTo(Societies);
-Societies.hasOne(Societylocal);
+//one to one mapping for user and society
+Societies.belongsTo(User);
+User.hasOne(Societies);
+
+
+//one to one mapping for user and person
+Person.belongsTo(User);
+User.hasOne(Person);
 
 
 //one to one mapping for events and societies
@@ -88,22 +90,22 @@ Events.belongsTo(Societies);
 Societies.hasOne(Events);
 
 //many to many mapping for societies and users through table societyuser
-Societies.belongsToMany(Users, {through: Societyusers});
-Users.belongsToMany(Societies, {through: Societyusers});
+Societies.belongsToMany(User, {through: Societyusers});
+User.belongsToMany(Societies, {through: Societyusers});
 
 //many to many mapping for users and events through usersgoingtoevent
-Users.belongsToMany(Events, {through: Usersgoingtoevents});
-Events.belongsToMany(Users, {through: Usersgoingtoevents});
+User.belongsToMany(Events, {through: Usersgoingtoevents});
+Events.belongsToMany(User, {through: Usersgoingtoevents});
 
 sequelize.sync();
 
 module.exports = {
-    Users,
+    User,
     Events,
     Societies,
     Userlocal,
-    Societylocal,
     Societyusers,
     Usersgoingtoevents,
-    Admins
+    Admins,
+    Person
 }

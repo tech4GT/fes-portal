@@ -30,7 +30,9 @@ app.use(session({
 
     saveUninitialized: true
 }))
-//Enable login and auth
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(validator({
 

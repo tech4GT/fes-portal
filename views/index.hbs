@@ -1,0 +1,19 @@
+<h2 class="page-header">Dashboard</h2>
+<p>Welcome to your dashboard</p>
+<div class="bg-info">
+<span><b>{{details.name}}</b></span>
+    <br>
+<span><b>{{details.college}}</b></span>
+<br>
+    {{#if details.email}}
+        <span><b>{{details.email}}</b></span>
+        <br>
+    {{/if}}
+    {{#if details.bio}}
+        <span><b>{{details.bio}}</b></span>
+    {{/if}}
+    {{#if details.description}}
+        <span><b>{{details.description}}</b></span>
+    {{/if}}
+</div>
+

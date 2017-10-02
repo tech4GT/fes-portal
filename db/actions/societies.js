@@ -1,4 +1,5 @@
 const models = require('../models')
+const userfuns = require('./user')
 const bcrypt = require('bcrypt')
 module.exports = {
     getAll: function (done) {
@@ -7,15 +8,19 @@ module.exports = {
         })
     },
     addNew: function (name, college, description, done) {
-        models.Societies.create({
-            name: name,
-            college: college,
-            description : description
-        }).then(data => {
-            done(data)
-        }).catch(err => {
-            if (err) throw err;
-        });
+
+        userfuns.addNew(function (data) {
+            models.Societies.create({
+                name: name,
+                college: college,
+                description : description,
+                userId : data.dataValues.id
+            }).then(data => {
+                done(data)
+            }).catch(err => {
+                if (err) throw err;
+            });
+        })
     },
     searchOne: function (id, done) {
         models.Societies.findOne({
@@ -37,6 +42,7 @@ module.exports = {
             if (err) throw err;
         });
     },
+    //fixme fix delete
     deleteOne: function (id, done) {
         models.Societylocal.destroy({
             where: {

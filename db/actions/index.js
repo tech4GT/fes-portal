@@ -1,6 +1,7 @@
 module.exports = {
     events : require('./events'),
     societies : require('./societies'),
-    users : require('./users'),
-    societyuser : require('./societyUser')
+    users : require('./user'),
+    societyuser : require('./societyUser'),
+    person : require('./person')
 }
