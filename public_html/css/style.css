@@ -125,3 +125,40 @@ a{
 footer{
     margin-top:50px;
 }
+.box{
+    border:0.05em solid;
+    border-radius:15px;
+    border-color: #800000;
+    background-color:#800000;
+    box-shadow:10px 10px 5px #888888;
+}
+.inner-box{
+    border:none;
+    border-radius: 10px;
+    margin-top:50px;
+    margin-bottom:50px;
+    margin-left:10px;
+    margin-right: 10px;
+    padding:10px;
+    background-color:rgba(255,255,255,0.9);
+    box-shadow:5px 5px 2px #888888;
+
+}
+.myImg{
+    max-height: 150px;
+    max-width: 150px;
+    border-radius: 50% 50%;
+    height: 100px;
+    width: 100px;
+    border:0.1em solid;
+}
+.bio-ll{
+    text-align: left;
+}
+.bio-rl{
+    text-align: right;
+}
+.bio-name{
+    margin-top:5px;
+    margin-bottom:5px;
+}

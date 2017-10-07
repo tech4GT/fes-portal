@@ -1,3 +1,5 @@
+<div class="container">
+    
 <h2 class="page-header">New Society Registration</h2>
 {{#if errors}}
     {{# each errors}}
@@ -43,45 +45,59 @@
 
     <button type="submit" class="btn btn-default">Submit</button>
 </form> -->
-<div class="col-md-2">
-</div>
-<div class="col-md-8">
-<form method="post" action="/users/signup/?society=true">
-    <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-        <input type="text" class="form-control" placeholder="Name" name="Name">
+    <div class="col-md-2">
     </div>
-    <br>
-    <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-        <input type="text" class="form-control" placeholder="Username" name="Username">
+    <div class="col-md-8">
+    <form method="post" action="/users/signup/?society=true">
+      <div class="input-group">
+        <div class="form-group">
+                <img id='img-upload' height=200 width=200/>
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <span class="btn btn-default btn-file">
+                            <input type="file" value="" id="Photo" name="Photo">
+                        </span>
+                    </span>
+                    <input type="hidden" class="form-control" hidden readonly>
+                </div>
+        </div>
+      </div>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input type="text" class="form-control" placeholder="Name" name="Name">
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+            <input type="text" class="form-control" placeholder="Username" name="Username">
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-education"></i></span>
+            <input type="text" class="form-control" placeholder="College" name="College">
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+            <input type="password" class="form-control" placeholder="Password" name="Password">
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+            <input type="password" class="form-control" placeholder="Confirm Password" name="Password2">
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-comment"></i></span>
+            <input type="text" class="form-control" placeholder="Description" name="Description">
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-qrcode"></i></span>
+            <input type="text" class="form-control" placeholder="Code" name="Code">
+        </div>
+        <br>
+        <button type="submit" class="btn btn-warning btn-block">Login</button>
+        </form>
     </div>
-    <br>
-    <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-education"></i></span>
-        <input type="text" class="form-control" placeholder="College" name="College">
-    </div>
-    <br>
-    <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-        <input type="password" class="form-control" placeholder="Password" name="Password">
-    </div>
-    <br>
-    <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-        <input type="password" class="form-control" placeholder="Confirm Password" name="Password2">
-    </div>
-    <br>
-    <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-comment"></i></span>
-        <input type="text" class="form-control" placeholder="Description" name="Description">
-    </div>
-    <br>
-    <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-qrcode"></i></span>
-        <input type="text" class="form-control" placeholder="Code" name="Code">
-    </div>
-    <br>
-    <button type="submit" class="btn btn-warning btn-block">Login</button>
-    </form>
 </div>

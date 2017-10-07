@@ -1,6 +1,6 @@
-<h2 class="page-header">Dashboard</h2>
+<!-- <h2 class="page-header">Dashboard</h2>
 <p>Welcome to your dashboard</p>
-<div class="bg-info">
+ --><!-- <div class="bg-info">
 <span><b>{{details.name}}</b></span>
     <br>
 <span><b>{{details.college}}</b></span>
@@ -21,3 +21,46 @@
     <button class="btn btn-default"><a href="/users/events">My Events</a> </button>
 {{/if}}
 
+ -->
+
+ <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="box">
+                <div class="inner-box text-center">
+                    <!-- <p>Manish</p> -->
+                    <p><img src="http://simpleicon.com/wp-content/uploads/user1.png" class="myImg" align="middle" ></p>
+                    <table class="table table-hover table-condensed">
+                        <thread>
+                            <span class="bio-name"><b>{{details.name}}</b></span>
+                        </thread>
+                        <tbody>
+                          <tr>
+                            <td class="bio-ll"><span class="glyphicon glyphicon-education" align="left"></td>
+                            <td class="bio-rl"></span><span class="bio bio-college">{{details.college}}</span></td>
+                          </tr>
+                          {{#if details.email}}
+                          <tr>
+                            <td class="bio-ll"><span class="glyphicon glyphicon-envelope" align="left"></span></td>
+                            <td class="bio-rl"><span class="bio bio-email">{{details.email}}</span></td>
+                          </tr>
+                          {{/if}}
+                          {{#if details.bio}}
+                          <tr>
+                            <td class="bio-ll"><span class="glyphicon glyphicon-comment" align="left"></span></td>
+                            <td class="bio-rl"><span class="bio bio-bio">{{details.bio}}</span></td>
+                          </tr>
+                          {{/if}}
+                          {{#if details.description}}
+                          <tr>
+                            <td class="bio-ll"><span class="glyphicon glyphicon-comment" align="left"></span></td>
+                            <td class="bio-rl"><span class="bio bio-desc"><{{details.description}}</span></td>
+                          </tr>
+                          {{/if}}
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
