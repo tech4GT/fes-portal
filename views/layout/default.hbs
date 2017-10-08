@@ -2,12 +2,18 @@
 <html>
 <head>
     <title>FES-PORTAL</title>
-    <link rel="stylesheet" href="../../css/bootstrap.css">
+<!--     <link rel="stylesheet" href="css/bootstrap.css">
+ -->    
+<!--     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+ --> 
+<!--     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+ -->
     <link rel="stylesheet" href="../../css/style.css">
-    <script type="text/javascript" src ="../../js/bootstrap.js"></script>
-    <script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
-
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="../../js/custom.js"></script>
 </head>
 <body>
 <!--  <div class="navbar navbar-static-top">
@@ -31,7 +37,6 @@
     </div>
   </div>
 </div>  -->
-
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -45,17 +50,17 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         {{#if user}}
-            <li role="presentation"><a href="/users/me">Dashboard</a></li>
-            <li role="presentation"><a href="/users/logout">Logout</a></li>
+            <li role="presentation"><a href="/users/me">Dashboard <span class="glyphicon glyphicon-user"></span> </a></li>
+            <li role="presentation"><a href="/users/logout">Logout <span class="glyphicon glyphicon-log-out"></span> </a></li>
         {{else}}
-            <li role="presentation"><a href="/users/login">Login</a></li>
-            <li role="presentation"><a href="/users/signup">Register</a></li>
+            <li role="presentation"><a href="/users/login">Login <span class="glyphicon glyphicon-log-in"></span> </a></li>
+            <li role="presentation"><a href="/users/signup">Register <span class="glyphicon glyphicon-pencil"></span> </a></li>
         {{/if}}
       </ul>
     </div>
   </div>
 </nav>
-<div class="container">
+<div class="container-fluid">
 <!--     <div class="header clearfix">
         <nav>
             <ul class="nav nav-pills pull-right">
