@@ -7,15 +7,22 @@ const path = require('path')
 const exphbs = require('express-hbs')
 const validator = require('express-validator')
 const flash = require('connect-flash')
+const fileupload = require('express-fileupload')
 
-const routes  = require('./routes')
+const routes = require('./routes')
 
 
 var app = express();
 
-app.use(bp.json());
-app.use(bp.urlencoded({extended: true}))
+app.use(fileupload());
+app.use(bp.json({limit: '50mb'}));
+app.use(bp.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
+
 app.use(cp())
+
+app.post('/photoupload',function (req, res, next) {
+    console.log(!!req.body.files.foo)
+})
 
 
 app.engine('hbs', exphbs.express4({
@@ -26,7 +33,7 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
 app.use(session({
-    secret : 'secret',
+    secret: 'secret',
 
     saveUninitialized: true
 }))
@@ -63,10 +70,10 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.use('/api/v1',routes.api)
-app.use('/users',routes.users)
-app.use('/events',routes.events)
-app.use('/',express.static(path.join(__dirname,'public_html')),routes.home)
+app.use('/api/v1', routes.api)
+app.use('/users', routes.users)
+app.use('/events', routes.events)
+app.use('/', express.static(path.join(__dirname, 'public_html')), routes.home)
 
 
 app.listen(4000, () => {

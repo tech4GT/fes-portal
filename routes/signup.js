@@ -5,6 +5,7 @@ const express = require('express')
 const db = require('../db')
 const passport = require('../Auth/passport')
 const secrets = require('../secrets.json')
+const randomstring = require('randomstring')
 const router = express.Router()
 
 router.get('/', function (req, res) {
@@ -44,14 +45,21 @@ router.post('/', function (req, res) {
             })
         }
         else {
-            db.actions.societies.addNew(Society.name, Society.college, Society.description, function (data) {
-                db.actions.users.addLocaluser(Society.username, Society.password, data.userId, function (resData) {
-                    req.flash(
-                        'success_msg',
-                        'You are registered as Society and can now log in'
-                    );
-                    res.redirect('/users/login')
-                })
+            let photo = req.files.Photo
+            let photoname = randomstring.generate()
+            photo.mv('/public_html/photos/' + photoname + '.jpeg', function (err) {
+                if (err) throw err
+                else {
+                    db.actions.societies.addNew(Society.name, Society.college, Society.description,photoname, function (data) {
+                        db.actions.users.addLocaluser(Society.username, Society.password, data.userId, function (resData) {
+                            req.flash(
+                                'success_msg',
+                                'You are registered as Society and can now log in'
+                            );
+                            res.redirect('/users/login')
+                        })
+                    })
+                }
             })
         }
     }
@@ -82,15 +90,22 @@ router.post('/', function (req, res) {
             })
         }
         else {
-            db.actions.person.addNew(Person.name, Person.email, Person.college, Person.bio, function (data) {
-                db.actions.users.addLocaluser(Person.username, Person.password, data.userId, function (resData) {
-                    req.flash(
-                        'success_msg',
-                        'You are registered as User and can now log in'
-                    );
-                    res.redirect('/users/login')
-                })
-            })
+            let photo = req.files.Photo
+            let photoname = randomstring.generate()
+            photo.mv('/public_html/photos/' + photoname + '.jpeg', function (err) {
+                if (err) throw err
+                else {
+                    db.actions.person.addNew(Person.name, Person.email, Person.college, Person.bio, function (data) {
+                        db.actions.users.addLocaluser(Person.username, Person.password, data.userId, function (resData) {
+                            req.flash(
+                                'success_msg',
+                                'You are registered as User and can now log in'
+                            );
+                            res.redirect('/users/login')
+                        })
+                    })
+                }
+            });
         }
     }
 })

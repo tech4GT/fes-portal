@@ -6,14 +6,15 @@ module.exports = {
             done(data)
         })
     },
-    addNew: function (name, email, college, bio, done) {
+    addNew: function (name, email, college, bio,photo, done) {
         userfuns.addNew(function (data) {
             models.Person.create({
                 name: name,
                 email: email,
                 college: college,
                 bio: bio,
-                userId : data.dataValues.id
+                userId : data.dataValues.id,
+                photo: photo
             }).then(data => {
                 done(data)
             }).catch(err => {

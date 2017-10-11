@@ -10,13 +10,14 @@ module.exports = {
             done(data)
         })
     },
-    addNew: function (name, desc, date, venue, sid, archived, done) {
+    addNew: function (name, desc, date, venue, sid,photo, archived, done) {
         models.Events.create({
             name: name,
             desc: desc,
             date: date,
             venue: venue,
             societyId: sid,
+            photo: photo,
             archived: archived
         }).then(data => {
             done(data)

@@ -14,18 +14,17 @@ const sequelize = new Sequelize(config.DB_NAME, config.DB_USER, config.DB_PASS, 
 
 
 //Table to store the Events
-//todo add picture field
 const Events = sequelize.define('events', {
     id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
     name : {type : Sequelize.STRING, allowNull: false},
     desc: Sequelize.STRING,
     date: {type: Sequelize.DATE, allowNull: false},
     venue: {type: Sequelize.STRING, allowNull: false},
-    archived: Sequelize.BOOLEAN
+    archived: Sequelize.BOOLEAN,
+    photo : Sequelize.STRING
 });
 
 //table to store Users
-//todo add picture field
 
 const User = sequelize.define('users',{
     id : {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true}
@@ -36,17 +35,18 @@ const Person = sequelize.define('person', {
     name: {type: Sequelize.STRING, allowNull: false},
     email: {type: Sequelize.STRING, isEmail: true, allowNull: false},
     college : {type : Sequelize.STRING, allowNull: false},
-    bio: Sequelize.STRING
+    bio: Sequelize.STRING,
+    photo: Sequelize.STRING
 });
 
 
 //table to store societies
-//todo add picture field
 const Societies = sequelize.define('societies', {
     id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
     name: {type: Sequelize.STRING, allowNull: false},
     college: {type: Sequelize.STRING, allowNull: false},
-    description: Sequelize.STRING
+    description: Sequelize.STRING,
+    photo: Sequelize.STRING
 });
 
 
@@ -97,7 +97,7 @@ User.belongsToMany(Societies, {through: Societyusers});
 User.belongsToMany(Events, {through: Usersgoingtoevents});
 Events.belongsToMany(User, {through: Usersgoingtoevents});
 
-sequelize.sync();
+sequelize.sync({force : true});
 
 module.exports = {
     User,
