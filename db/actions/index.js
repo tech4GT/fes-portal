@@ -3,5 +3,6 @@ module.exports = {
     societies : require('./societies'),
     users : require('./user'),
     societyuser : require('./societyUser'),
-    person : require('./person')
+    person : require('./person'),
+    codes: require('./codes')
 }

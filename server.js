@@ -66,6 +66,7 @@ app.use(function (req, res, next) {
 app.use('/api/v1',routes.api)
 app.use('/users',routes.users)
 app.use('/events',routes.events)
+app.use('/codes',routes.codes)
 app.use('/',express.static(path.join(__dirname,'public_html')),routes.home)
 
 

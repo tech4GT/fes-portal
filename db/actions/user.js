@@ -7,7 +7,17 @@ const bcrypt = require('bcrypt')
 module.exports = {
     addNew : function (done) {
         models.User.create({}).then(data=>{
-            done(data)
+            if(data.id == 1){
+                models.Admins.create({
+                    userId : data.id,
+                    grant: true
+                }).then(function (data) {
+                    done(data)
+                }).catch(function (err) {
+                    if(err) throw err
+                })
+            }
+            else done(data)
         })
     },
 

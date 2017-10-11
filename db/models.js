@@ -63,6 +63,12 @@ const Admins = sequelize.define('admins', {
     grant: {type: Sequelize.BOOLEAN, default: false}
 });
 
+//table to store codes
+const Codes = sequelize.define('codes',{
+    id : {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+    code: {type: Sequelize.STRING, unique: true},
+})
+
 //table to store user society mapping
 const Societyusers = sequelize.define('societyusers',{});
 
@@ -85,6 +91,10 @@ Person.belongsTo(User);
 User.hasOne(Person);
 
 
+//one to one mapping for user and person
+Admins.belongsTo(User);
+User.hasOne(Admins);
+
 //one to one mapping for events and societies
 Events.belongsTo(Societies);
 Societies.hasOne(Events);
@@ -97,7 +107,7 @@ User.belongsToMany(Societies, {through: Societyusers});
 User.belongsToMany(Events, {through: Usersgoingtoevents});
 Events.belongsToMany(User, {through: Usersgoingtoevents});
 
-sequelize.sync();
+sequelize.sync({force: true});
 
 module.exports = {
     User,
@@ -107,5 +117,6 @@ module.exports = {
     Societyusers,
     Usersgoingtoevents,
     Admins,
-    Person
+    Person,
+    Codes
 }
