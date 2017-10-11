@@ -20,5 +20,37 @@ module.exports = {
                 next();
             }
         })
+    },
+    EnsureAdmin: function (req, res, next) {
+        db.models.Admins.findOne({
+            where : {
+                userId : req.user.userId
+            }
+        }).then(function (data) {
+            if(!data) {
+                res.send({
+                    "authorized" : false
+                })
+            }
+            else{
+                next();
+            }
+        })
+    },
+    EnsureGrantAdmin: function (req, res, next) {
+        db.models.Admins.findOne({
+            where : {
+                userId : req.user.userId
+            }
+        }).then(function (data) {
+            if(data.dataValues.grant){
+                next();
+            }
+            else{
+                res.send({
+                    "Authorized" : false
+                })
+            }
+        })
     }
 }
