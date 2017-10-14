@@ -5,6 +5,7 @@ const express = require('express')
 const db = require('../db')
 const util = require('../utils')
 const acl = require('../acl')
+const randomstring = require('randomstring')
 const router = express.Router()
 
 router.post('/new',acl.EnsureLogin,acl.EnsureLoginSociety, function (req, res) {
@@ -27,11 +28,19 @@ router.post('/new',acl.EnsureLogin,acl.EnsureLoginSociety, function (req, res) {
         })
     }
     else {
-        db.actions.events.addNew(Event.name, Event.desc, Event.date, Event.venue, req.user.id, Event.archived, function (data) {
-            res.render('event', {
-                details : data.dataValues
-            })
+        let photo = req.files.Photo
+        let photoname = randomstring.generate()
+        photo.mv('/public_html/photos/' + photoname + ".jpeg",function (err) {
+            if(err) throw err;
+            else{
+                db.actions.events.addNew(Event.name, Event.desc, Event.date, Event.venue, req.user.id,photoname, Event.archived, function (data) {
+                    res.render('event', {
+                        details : data.dataValues
+                    })
+                })
+            }
         })
+
     }
 
 })

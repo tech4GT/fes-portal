@@ -7,14 +7,15 @@ module.exports = {
             done(data)
         })
     },
-    addNew: function (name, college, description, done) {
+    addNew: function (name, college, description,photo, done) {
 
         userfuns.addNew(function (data) {
             models.Societies.create({
                 name: name,
                 college: college,
                 description : description,
-                userId : data.dataValues.id
+                userId : data.dataValues.id,
+                photo: photo
             }).then(data => {
                 done(data)
             }).catch(err => {

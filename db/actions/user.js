@@ -77,5 +77,15 @@ module.exports = {
         }).catch(function (err) {
             if(err) throw err;
         })
+    },
+    makeAdmin(userId,grant,done){
+        models.Admins.create({
+            userId : userId,
+            grant: grant
+        }).then(function (data) {
+            done(data)
+        }).catch(function (err) {
+            if(err) throw err;
+        })
     }
 }

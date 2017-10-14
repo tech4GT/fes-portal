@@ -7,15 +7,25 @@ const path = require('path')
 const exphbs = require('express-hbs')
 const validator = require('express-validator')
 const flash = require('connect-flash')
+const fileupload = require('express-fileupload')
+const multer = require('multer')
+var upload = multer({ dest: 'public_html/photos' })
 
-const routes  = require('./routes')
+const routes = require('./routes')
 
 
 var app = express();
 
-app.use(bp.json());
-app.use(bp.urlencoded({extended: true}))
+app.use(bp.json({limit: '50mb'}));
+app.use(bp.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
 app.use(cp())
+app.use(fileupload());
+
+app.post('/upload',function (req, res) {
+    console.log(req.body)
+    console.log(req.files.foo)
+
+})
 
 
 app.engine('hbs', exphbs.express4({
@@ -26,7 +36,7 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
 app.use(session({
-    secret : 'secret',
+    secret: 'secret',
 
     saveUninitialized: true
 }))

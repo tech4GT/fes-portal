@@ -48,23 +48,28 @@
     <div class="col-md-2">
     </div>
     <div class="col-md-8">
-    <form method="post" action="/users/signup/?society=true">
-      <div class="input-group">
-        <div class="form-group">
-                <img id='img-upload' height=200 width=200/>
-                <div class="input-group">
-                    <span class="input-group-btn">
-                        <span class="btn btn-default btn-file">
-                            <input type="file" value="" id="Photo" name="Photo">
-                        </span>
-                    </span>
-                    <input type="hidden" class="form-control" hidden readonly>
-                </div>
-        </div>
-      </div>
+    <form method="post" action="/users/signup/?society=true" enctype="multipart/form-data">
+      <!--<div class="input-group">-->
+        <!--<div class="form-group">-->
+                <!--<img id='img-upload' height=200 width=200/>-->
+                <!--<div class="input-group">-->
+                    <!--<span class="input-group-btn">-->
+                        <!--<span class="btn btn-default btn-file">-->
+                            <!--<input class="form-control" type="file" name="Photo">-->
+                        <!--</span>-->
+                    <!--</span>-->
+                    <!--<input type="hidden" class="form-control" hidden readonly>-->
+                <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+
         <div class="input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
             <input type="text" class="form-control" placeholder="Name" name="Name">
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input type="file" class="form-control" placeholder="Photo" name="Photo">
         </div>
         <br>
         <div class="input-group">
