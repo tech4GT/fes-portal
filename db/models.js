@@ -24,6 +24,20 @@ const Events = sequelize.define('events', {
     photo : Sequelize.STRING
 });
 
+
+//Table to store fests
+const Fests = sequelize.define('fests', {
+    id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+    name : {type : Sequelize.STRING, allowNull: false},
+    desc: Sequelize.STRING,
+    start_date: {type: Sequelize.DATE, allowNull: false},
+    end_date: {type: Sequelize.DATE, allowNull: false},
+    venue: {type: Sequelize.STRING, allowNull: false},
+    archived: Sequelize.BOOLEAN,
+    photo: Sequelize.STRING   
+});
+
+
 //table to store Users
 
 const User = sequelize.define('users',{
@@ -99,6 +113,15 @@ User.hasOne(Admins);
 Events.belongsTo(Societies);
 Societies.hasOne(Events);
 
+//many to one mapping for events and fests
+Events.belongsTo(Fests);
+Fests.hasMany(Events);
+
+//one to one mapping for Fests and societies
+Fests.belongsTo(Societies);
+Societies.hasOne(Fests);
+
+
 //many to many mapping for societies and users through table societyuser
 Societies.belongsToMany(User, {through: Societyusers});
 User.belongsToMany(Societies, {through: Societyusers});
@@ -112,6 +135,7 @@ sequelize.sync({force: true});
 module.exports = {
     User,
     Events,
+    Fests,
     Societies,
     Userlocal,
     Societyusers,
